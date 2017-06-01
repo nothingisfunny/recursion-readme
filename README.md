@@ -12,7 +12,7 @@ Recursive functions are functions that call themselves.
 
 For example the function below is recursive:
 
-```javascript
+```js
 
 function sayDownFrom(n){
   console.log(n)
@@ -39,7 +39,7 @@ We teach recursion for two reasons.  First, you will find your brain thinking of
 
 Let's consider a function called sumUpToFive that adds up all of the numbers up to five.  To be explicit, it would look like the following.
 
-```javascript
+```js
 function sumUpToFive(){
   return (1 + 2 + 3 + 4 + 5)
 }
@@ -48,7 +48,7 @@ function sumUpToFive(){
 
 which equals
 
-```javascript
+```js
 function sumUpToFive(){
   return (1 + 2 + 3 + 4) + 5
 }
@@ -56,7 +56,7 @@ function sumUpToFive(){
 
 Consider that set of parentheses around one and four.  Isn't that really the same thing as sum up to four?  This implies that we can rewrite sumUpToFive as the following:
 
-```javascript
+```js
 function sumUpToFive(){
   return sumUpToFour + 5
 }
@@ -74,7 +74,7 @@ At this point, if we asked you to write a function called, sumUpTo(n), you may a
 
 Right? Take a look.
 
-```javascript
+```js
 function sumUpToFive(){
   return sumUpToFour + 5
 }
@@ -99,7 +99,7 @@ function sumUpToOne(){
 
 If that's true, then we can rewrite our function sumUpTo(n) as the following:
 
-```javascript
+```js
   function sumUpTo(n){
     sumUpTo(n - 1) + n
   }
@@ -107,7 +107,7 @@ If that's true, then we can rewrite our function sumUpTo(n) as the following:
 ```
 However if just keep the function above, we will call this function forever.  Let's stop when n is one.  As you see above, the sum up to the number one is one, so we can just write our function as the following:
 
-```javascript
+```js
 function sumUpTo(n){
   if(n > 1){
       sumUpTo(n - 1) + n
@@ -121,7 +121,7 @@ function sumUpTo(n){
 
 Let's see what happens if we pass the number five into this function.
 
-```javascript
+```js
 
 function sumUpTo(n){
   if(n > 1){
@@ -134,17 +134,17 @@ function sumUpTo(n){
 sumUpTo(5)
   // this translates to
   sumUpTo(4) + 5
-    // then javascript translates sumUpTo(4) as
+    // then JavaScript translates sumUpTo(4) as
     sumUpTo(3) + 4
       sumUpTo(2) + 3
         sumUpTo(1) + 2
           // 1
 ```
-So at this point, all we showed is Javascript breaking down, or reinterpreting our function.  What is the sumUpTo(5)?  Well it's the sumUpTo(4) + 5.  What is the sumUpTo(4)?  It's the sumUpTo(3) + 4.  All of these sumUpTo are unsolved puzzles for Javascript until we get to sumUpTo(1).  Our function says that sumUpTo(1) returns 1 (by virtue of the `else` block.  
+So at this point, all we showed is JavaScript breaking down, or reinterpreting our function.  What is the sumUpTo(5)?  Well it's the sumUpTo(4) + 5.  What is the sumUpTo(4)?  It's the sumUpTo(3) + 4.  All of these sumUpTo are unsolved puzzles for JavaScript until we get to sumUpTo(1).  Our function says that sumUpTo(1) returns 1 (by virtue of the `else` block.  
 
-So now Javscript can start filling in these function calls.  Because sumUpTo(1) equals one, and sumUpTo(2) equals sumUpTo(1) + 2 the sumUpTo(2) equals 3.  In other words Javascript performs the following.   
+So now Javscript can start filling in these function calls.  Because sumUpTo(1) equals one, and sumUpTo(2) equals sumUpTo(1) + 2 the sumUpTo(2) equals 3.  In other words JavaScript performs the following.   
 
-```javascript
+```js
     // 1
   sumUpTo(1) + 2 // 3
     sumUpTo(2) + 3 // 6
@@ -155,7 +155,7 @@ So now Javscript can start filling in these function calls.  Because sumUpTo(1) 
 
 So when we write a function like
 
-```javascript
+```js
 function sumUpTo(n){
   if(n > 1){
       sumUpTo(n - 1) + n
@@ -164,9 +164,9 @@ function sumUpTo(n){
   }
 }
 ```
-There are really two steps involved.  First Javascript repeatedly calls the sumUpTo function until it reaches the stopping point (the base case), and then once it hits the base case, it can begin to resolve the other function calls.  Believe it or not, you've see this process before.  You've seen it every time a function calls another function.  For example,
+There are really two steps involved.  First, JavaScript repeatedly calls the sumUpTo function until it reaches the stopping point (the base case), and then once it hits the base case, it can begin to resolve the other function calls.  Believe it or not, you've seen this process before.  You've seen it every time a function calls another function.  For example,
 
-```javascript
+```js
   function sumUpToFive(){
     sumUpToFour + 1
   }
@@ -176,15 +176,15 @@ There are really two steps involved.  First Javascript repeatedly calls the sumU
   }
 ```
 
-In the above code, for Javascript to evaluate the function call sumUpToFive it must first evaluate sumUpToFour.  Just like in our recursive solution to evaluate sumUpTo(5) it must first evaluate sumUpTo(4).  
+In the above code, for JavaScript to evaluate the function call sumUpToFive it must first evaluate sumUpToFour.  Just like in our recursive solution to evaluate sumUpTo(5) it must first evaluate sumUpTo(4).  
 
-So Javascript is in the middle of all of these function calls until the base case is resolved.  Then once it solves that sumUpTo(1) equals one, it can begin to resolve sumUpTo(2) and so on.
+So JavaScript is in the middle of all of these function calls until the base case is resolved.  Then once it solves that sumUpTo(1) equals one, it can begin to resolve sumUpTo(2) and so on.
 
 ### Discovering a recursive solution
 
 Ok, so now we understand that when we see a function like sumUpTo we know that two steps are involved, breaking the function down into it's recursive calls until the base case is reached.  And then once the base case is resolved, then the other recursive calls are solved.  
 
-```javascript
+```js
 function sumUpTo(n){
   if(n > 1){
       sumUpTo(n - 1) + n
@@ -198,7 +198,7 @@ Now, let's try to disentangle how we get to a recursive solution.  We do so not 
 
 1. We are given the problem sumUpTo(n) and so we solve it with an example.  
 
-  ```javascript
+  ```js
   sumUpTo(5)
     // 1 + 2 + 3+ 4 + 5
   ```
@@ -211,4 +211,4 @@ Now, let's try to disentangle how we get to a recursive solution.  We do so not 
 
 ### Summary
 
-In this lesson we learned two things: how to find the recursive solution to a problem, and how Javascript evaluates a recursive solution.  We find the recursive solution by choosing an example, solving the example and then reword our solution by using our function.  For example we said that 1 + 2 + 3 + 4 + 5 can be reworded as the sum up to four plus five.  Then we find our base case, by finding the stopping point or the point where it is trivial to provide a return value.  Second, we also discussed how Javascript evaluates our recursive solutions.  We said that a recursive solution is evaluated by making multiple recursive calls until the base case is reached.  No recursive call can be evaluated until the base case provides a solution.  Then the other recursive calls can be solved, one by one until we have arrived at our solution.
+In this lesson we learned two things: how to find the recursive solution to a problem, and how JavaScript evaluates a recursive solution.  We find the recursive solution by choosing an example, solving the example and then reword our solution by using our function.  For example we said that 1 + 2 + 3 + 4 + 5 can be reworded as the sum up to four plus five.  Then we find our base case, by finding the stopping point or the point where it is trivial to provide a return value.  Second, we also discussed how JavaScript evaluates our recursive solutions.  We said that a recursive solution is evaluated by making multiple recursive calls until the base case is reached.  No recursive call can be evaluated until the base case provides a solution.  Then the other recursive calls can be solved, one by one until we have arrived at our solution.
