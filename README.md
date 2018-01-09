@@ -110,7 +110,7 @@ However if just keep the function above, we will call this function forever.  Le
 ```js
 function sumUpTo(n){
   if(n > 1){
-      sumUpTo(n - 1) + n
+     return sumUpTo(n - 1) + n
   } else {
     return 1
   }
@@ -125,7 +125,7 @@ Let's see what happens if we pass the number five into this function.
 
 function sumUpTo(n){
   if(n > 1){
-      sumUpTo(n - 1) + n
+    return sumUpTo(n - 1) + n
   } else {
     return 1
   }
@@ -158,7 +158,7 @@ So when we write a function like
 ```js
 function sumUpTo(n){
   if(n > 1){
-      sumUpTo(n - 1) + n
+    return sumUpTo(n - 1) + n
   } else {
     return 1
   }
@@ -187,7 +187,7 @@ Ok, so now we understand that when we see a function like sumUpTo we know that t
 ```js
 function sumUpTo(n){
   if(n > 1){
-      sumUpTo(n - 1) + n
+    return sumUpTo(n - 1) + n
   } else {
     return 1
   }
